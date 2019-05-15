@@ -1,0 +1,42 @@
+{
+  "name": "wiki-territoires",
+  "version": "1.0.0",
+  "description": "Site de consultation d'informations relative aux territoires français.",
+  "main": "index.js",
+  "author": "GAUTHIER Guillaume",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node serveur",
+    "build": "next build",
+    "start": "NODE_ENV=production node serveur"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.16.4",
+    "next": "^8.1.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-inline-import": "^3.0.0",
+    "eslint-config-xo-nextjs": "^1.4.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "xo": "^0.24.0"
+  },
+  "xo": {
+    "extends": "xo-nextjs",
+    "semicolon": false,
+    "space": 2,
+    "envs": [
+      "browser"
+    ],
+    "rules": {
+      "react/no-danger": "warn",
+      "react/require-default-props": "warn"
+    }
+  }
+}
