@@ -2,10 +2,16 @@ const {Router} = require('express')
 
 module.exports = app => {
   const router = new Router()
+  
+  router.get('/regions/:code', (req, res) => {
+    app.render(req, res, '/regions/region', {
+      ...req.query,
+      codeRegion: req.params.code
+    })
+  })
 
   router.get('*', (req, res) => {
     app.render(req, res, req.params[0], req.query)
   })
-
   return router
 }
