@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import Link from 'next/link'
 
 class CommunesList extends React.Component {
     render() {
@@ -8,9 +8,11 @@ class CommunesList extends React.Component {
                 {this.props.communes.length ?
                 this.props.communes.map(commune => {
                     return (
-                        <div key={commune.code}>
-                            {commune.nom} ({commune.code})
-                        </div>
+                        <Link key={commune.code} href={`/communes/${commune.code}`}><a>
+                            <div>
+                                {commune.nom} ({commune.code})
+                            </div>
+                        </a></Link>
                         )
                 }) :
                 <div>nique</div>
@@ -20,6 +22,10 @@ class CommunesList extends React.Component {
                         background-color: white;
                         color: black;
                         padding: 10px;
+                    }
+                    a {
+                        text-decoration: none;
+                        color: #26353f;
                     }
                 `}</style>
             </div>
