@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 
 class DepartementsList extends React.Component {
     render() {
@@ -8,10 +9,12 @@ class DepartementsList extends React.Component {
                 {this.props.departements.length ?
                 this.props.departements.map(departement => {
                     return (
-                        <div key={departement.code}>
-                            {departement.nom} ({departement.code})
-                        </div>
-                        )
+                        <Link key={departement.code} href={`/departements/${departement.code}`}><a>
+                            <div>
+                                {departement.nom} ({departement.code})
+                            </div>
+                        </a></Link>
+                    )
                 }) :
                 <div>nique</div>
                 }
@@ -20,6 +23,10 @@ class DepartementsList extends React.Component {
                         background-color: white;
                         color: black;
                         padding: 10px;
+                    }
+                    a {
+                        text-decoration: none;
+                        color: #26353f;
                     }
                 `}</style>
             </div>
