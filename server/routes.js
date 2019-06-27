@@ -17,6 +17,13 @@ module.exports = app => {
     })
   })
 
+  router.get('/communes/:code', (req, res) => {
+    app.render(req, res, '/communes/commune', {
+      ...req.query,
+      codeCommune: req.params.code
+    })
+  })
+
   router.get('*', (req, res) => {
     app.render(req, res, req.params[0], req.query)
   })
