@@ -31,7 +31,7 @@ class Regions extends React.Component {
                     <style jsx>{`
                         .region {
                             padding: 1em;
-                            background: #0053b3;;
+                            background: #0053b3;
                         }
                         a {
                          color: white;
