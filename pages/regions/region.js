@@ -1,4 +1,5 @@
 import React from "react"
+import _fetch from 'isomorphic-unfetch'
 
 class Region extends React.Component {
     static getInitialProps = async ({ query }) => {
