@@ -43,26 +43,26 @@ class Home extends React.Component {
                     <p className='hero__white-background'>Site de consultation d'informations relative aux territoires français.</p>
                 </div>
 
-                <div className="">
-                    <h2 className="section__title">Rechercher</h2>
-                    <div className='madame'>
-                        <div className='monsieur'>
+                <div>
+                    <h2 className='section__title'>Rechercher</h2>
+                    <div className='wrap'>
+                        <div className='wrapper'>
                             <Searchbar input={input} onChange={this.onSearch} />
                             {input.length > 0 && <CommunesList communes={filteredCommunes} />}
                         </div>
                     </div>
                 </div>
                 <style jsx>{`
-                    .madame {
+                    .wrap {
                         display: flex;
                         align-items: center;
                         flex-direction: column;
                     }
-                    .monsieur {
+                    .wrapper {
                         width: 80%;
                     }
                     @media (max-width: 768px) {
-                        .monsieur {
+                        .wrapper {
                             width: 100%;
                         }    
                     }
