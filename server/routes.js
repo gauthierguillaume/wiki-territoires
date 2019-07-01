@@ -2,7 +2,7 @@ const {Router} = require('express')
 
 module.exports = app => {
   const router = new Router()
-  
+
   router.get('/regions/:code', (req, res) => {
     app.render(req, res, '/regions/region', {
       ...req.query,
