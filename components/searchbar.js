@@ -9,10 +9,10 @@ class Searchbar extends React.Component {
   
     render() {
         return (
-            <div className='search__group' data-children-count='1'>
+            <div className='search__group'>
                     <input
                         type='text'
-                        className="search"
+                        className='search'
                         placeholder='Tapez le nom d’une commune...'
                         value={this.props.input}
                         onChange={e => this.handleChange(e)}
