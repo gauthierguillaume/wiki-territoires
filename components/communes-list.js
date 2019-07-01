@@ -4,7 +4,7 @@ import Link from 'next/link'
 class CommunesList extends React.Component {
     render() {
         return (
-            <div className='dropdownResult'>
+            <div className='dropdown-result'>
                 {this.props.communes.length ?
                 this.props.communes.map(commune => {
                     return (
@@ -15,10 +15,10 @@ class CommunesList extends React.Component {
                         </a></Link>
                         )
                 }) :
-                <div>nique</div>
+                <div>Aucun résultats</div>
                 }
                 <style jsx>{`
-                    .dropdownResult {
+                    .dropdown-result {
                         background-color: white;
                         color: black;
                         padding: 10px;

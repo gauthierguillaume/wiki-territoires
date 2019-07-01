@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import _fetch from 'isomorphic-unfetch'
 import PropTypes from 'prop-types'
 
@@ -14,8 +14,8 @@ class Commune extends React.Component {
 
     render() {
         return (
-                <div className="section">
-                    <h1 className="section__title">{this.props.commune.nom}</h1>
+                <div className='section'>
+                    <h1 className='section__title'>{this.props.commune.nom}</h1>
                     <div>Code INSEE : {this.props.commune.code}</div>
                     <div>Code Département : {this.props.commune.codeDepartement}</div>
                     <div>Code Région : {this.props.commune.codeRegion}</div>
