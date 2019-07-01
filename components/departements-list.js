@@ -4,7 +4,7 @@ import Link from 'next/link'
 class DepartementsList extends React.Component {
     render() {
         return (
-            <div className='dropdownResult'>
+            <div className='dropdown-result'>
                 {this.props.departements.length ?
                 this.props.departements.map(departement => {
                     return (
@@ -15,10 +15,10 @@ class DepartementsList extends React.Component {
                         </a></Link>
                     )
                 }) :
-                <div>nique</div>
+                <div>Aucun résultats</div>
                 }
                 <style jsx>{`
-                    .dropdownResult {
+                    .dropdown-result {
                         background-color: white;
                         color: black;
                         padding: 10px;

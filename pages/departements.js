@@ -42,26 +42,26 @@ class Departements extends React.Component {
                     <h1 className='section__title'>Départements</h1>
                 </div>
 
-                <div className="">
-                    <h2 className="section__title">Rechercher</h2>
-                    <div className='madame'>
-                        <div className='monsieur'>
+                <div>
+                    <h2 className='section__title'>Rechercher</h2>
+                    <div className='wrap'>
+                        <div className='wrapper'>
                             <Searchbar input={input} onChange={this.onSearch} />
                             {input.length > 0 && <DepartementsList departements={filteredDepartements} />}
                         </div>
                     </div>
                 </div>
                 <style jsx>{`
-                    .madame {
+                    .wrap {
                         display: flex;
                         align-items: center;
                         flex-direction: column;
                     }
-                    .monsieur {
+                    .wrapper {
                         width: 80%;
                     }
                     @media (max-width: 768px) {
-                        .monsieur {
+                        .wrapper {
                             width: 100%;
                         }    
                     }

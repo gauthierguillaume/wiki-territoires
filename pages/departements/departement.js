@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import _fetch from 'isomorphic-unfetch'
 
 class Departement extends React.Component {
@@ -13,8 +13,8 @@ class Departement extends React.Component {
 
     render() {
         return (
-                <div className="section">
-                    <h1 className="section__title">{this.props.departement.nom}</h1>
+                <div className='section'>
+                    <h1 className='section__title'>{this.props.departement.nom}</h1>
                     <div>Code INSEE : {this.props.departement.code}</div>
                     <div>Code Région : {this.props.departement.codeRegion}</div>
                 </div>
