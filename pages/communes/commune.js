@@ -24,7 +24,7 @@ class Commune extends React.Component {
             <ul>
               {this.props.commune.codesPostaux.map(codePostal => {
                 return (
-                  <li>{codePostal}</li>
+                  <li key={codePostal}>{codePostal}</li>
                 )
               })}
             </ul>
@@ -38,7 +38,6 @@ class Commune extends React.Component {
 Commune.propTypes = {
   nom: PropTypes.string.isRequired,
   code: PropTypes.string.isRequired,
-  codeCommune: PropTypes.string.isRequired,
   codeRegion: PropTypes.string.isRequired,
   codesPostaux: PropTypes.array.isRequired,
   population: PropTypes.number

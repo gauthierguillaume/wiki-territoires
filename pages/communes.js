@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Searchbar from '../components/searchbar.js'
-import CommunesList from '../components/communes-list.js'
+import Searchbar from '../components/searchbar'
+import CommunesList from '../components/communes-list'
 
 const startsWithFilter = (a, b) => {
   return a.startsWith(b)
@@ -23,7 +23,7 @@ class Communes extends React.Component {
   }
 
     communesFilter = input => {
-      return communes.filter(commune => startsWithFilter(commune, input))
+      return this.communes.filter(commune => startsWithFilter(commune, input))
     }
 
     onSearch = async input => {
@@ -65,7 +65,6 @@ class Communes extends React.Component {
                             width: 100%;
                         }    
                     }
-                    
                     `}</style>
         </div>
       )
