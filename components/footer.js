@@ -33,7 +33,7 @@ class Footer extends React.Component {
           <ul className='footer__links'>
             <li><h2>Wiki-Territoires</h2></li>
             <li><a href='https://www.data.gouv.fr/reference'>Données de référence</a></li>
-            <li><a href='https://www.data.gouv.fr/terms'>Conditions générales d'utilisation</a></li>
+            <li><a href='https://www.data.gouv.fr/terms'>Conditions générales d’utilisation</a></li>
             <li><a href='https://www.data.gouv.fr/api'>API</a></li>
           </ul>
         </div>
