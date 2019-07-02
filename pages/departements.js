@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Searchbar from '../components/searchbar.js'
-import DepartementsList from '../components/departements-list.js'
+import Searchbar from '../components/searchbar'
+import DepartementsList from '../components/departements-list'
 
 const startsWithFilter = (a, b) => {
   return a.startsWith(b)
@@ -23,7 +23,7 @@ class Departements extends React.Component {
   }
 
     departementsFilter = input => {
-      return departements.filter(departement => startsWithFilter(departement, input))
+      return this.departements.filter(departement => startsWithFilter(departement, input))
     }
 
     onSearch = async input => {
@@ -65,7 +65,6 @@ class Departements extends React.Component {
                             width: 100%;
                         }    
                     }
-                    
                     `}</style>
         </div>
       )
