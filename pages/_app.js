@@ -1,31 +1,30 @@
 import React from 'react'
-import App, { Container } from 'next/app'
-import Nav from "../components/nav"
-import Footer from "../components/footer"
-
+import App, {Container} from 'next/app'
+import Nav from '../components/nav'
+import Footer from '../components/footer'
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
+  static async getInitialProps({Component, ctx}) {
     let pageProps = {}
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    return { pageProps }
+    return {pageProps}
   }
 
   render() {
-    const { Component, pageProps } = this.props
+    const {Component, pageProps} = this.props
 
     return (
       <Container>
-        <div className="app-container">
+        <div className='app-container'>
           <Nav />
           <main>
             <Component {...pageProps} />
           </main>
-          <Footer/>
+          <Footer />
         </div>
         <style jsx>{`
           main {

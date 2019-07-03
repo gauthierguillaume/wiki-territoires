@@ -1,75 +1,75 @@
-import React from "react"
-import Commune from "../components/commune";
+import React from 'react'
 
-const communes = [
-    {
-        nom: "Rouen",
-        code: "76540",
-        codeDepartement: "76",
-        codeRegion: "28",
-        codesPostaux: [
-            "76000",
-            "76100",
-            "76600"
-        ],
-        population: 110117,"_score":1
-    },    
-    {   nom: "Sotteville-lès-Rouen",
-        code: "76681",
-        codeDepartement: "76",
-        codeRegion: "28",
-        codesPostaux:[
-            "76300"
-        ],
-        population: null,
-        _score: 0.6774746174842392
-    },
-    {
-        nom: "Déville-lès-Rouen",
-        code: "76216",
-        codeDepartement: "76",
-        codeRegion: "28",
-        codesPostaux:[
-            "76250"
-        ],
-        population: 10345,
-        _score: 0.6563848072324793
-    },
-    {
-        nom: "Vieux-Rouen-sur-Bresle",
-        code: "76739",
-        codeDepartement: "76",
-        codeRegion: "28",
-        codesPostaux:[
-            "76390"
-        ],
-        population: 570,
-        _score: 0.620662612755878
+import Searchbar from '../components/searchbar'
+import CommunesList from '../components/communes-list'
+
+const startsWithFilter = (a, b) => {
+  return a.startsWith(b)
+}
+
+const getCommunes = async input => {
+  const options = {
+    mode: 'cors'
+  }
+  const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${input}&limit=8`, options)
+
+  return res.json()
+}
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {input: '', filteredCommunes: []}
+  }
+
+    communesFilter = input => {
+      return this.communes.filter(commune => startsWithFilter(commune, input))
     }
-]
 
-class App extends React.Component {
+    onSearch = async input => {
+      this.setState({input})
+      this.setState({filteredCommunes: input.length > 0 ?
+        await getCommunes(input) :
+        []
+      })
+    }
+
     render() {
-        const elements = communes.map(function(commune) {
-            return (
-                <Commune
-                    nom={commune.nom}
-                    code={commune.code}
-                    codeDepartement={commune.codeDepartement}
-                    codeRegion={commune.codeRegion}
-                    codesPostaux={commune.codesPostaux}
-                    population={commune.population}   
-                />
-            )
-        })
+      const {input, filteredCommunes} = this.state
+      return (
+        <div>
+          <div className='hero__container'>
+            <h1 className='hero__white-background'>Wiki-Territoires</h1>
+            <p className='hero__white-background'>Site de consultation d’informations relative aux territoires français.</p>
+          </div>
 
-        return (
-            <div>
-                <h1>Wiki-Territoires</h1>
-                {elements}
+          <div>
+            <h2 className='section__title'>Rechercher</h2>
+            <div className='wrap'>
+              <div className='wrapper'>
+                <Searchbar input={input} onChange={this.onSearch} />
+                {input.length > 0 && <CommunesList communes={filteredCommunes} />}
+              </div>
             </div>
-        )
+          </div>
+          <style jsx>{`
+                    .wrap {
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                    }
+                    .wrapper {
+                        width: 80%;
+                    }
+                    @media (max-width: 768px) {
+                        .wrapper {
+                            width: 100%;
+                        }    
+                    }
+                    `}</style>
+        </div>
+      )
     }
 }
 
-export default App
+export default Home

@@ -13,14 +13,17 @@
   "dependencies": {
     "compression": "^1.7.4",
     "express": "^4.16.4",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "^8.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-icons": "^2"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-plugin-inline-import": "^3.0.0",
+    "eslint": "^5.16.0",
     "eslint-config-xo-nextjs": "^1.4.0",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
