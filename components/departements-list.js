@@ -5,7 +5,7 @@ class DepartementsList extends React.Component {
   render() {
     return (
       <div className='dropdown-result'>
-        {this.props.departements.length ?
+        {this.props.departements.length > 0 ?
           this.props.departements.map(departement => {
             return (
               <Link key={departement.code} href={`/departements/${departement.code}`}><a>

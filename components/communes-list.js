@@ -5,7 +5,7 @@ class CommunesList extends React.Component {
   render() {
     return (
       <div className='dropdown-result'>
-        {this.props.communes.length ?
+        {this.props.communes.length > 0 ?
           this.props.communes.map(commune => {
             return (
               <Link key={commune.code} href={`/communes/${commune.code}`}><a>
