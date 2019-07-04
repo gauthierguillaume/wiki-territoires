@@ -11,7 +11,7 @@ const getCommunes = async input => {
   const options = {
     mode: 'cors'
   }
-  const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${input}&limit=8`, options)
+  const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${input}&limit=50`, options)
 
   return res.json()
 }
@@ -19,23 +19,27 @@ const getCommunes = async input => {
 class Home extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {input: '', filteredCommunes: []}
-  }
-
-    communesFilter = input => {
-      return this.communes.filter(commune => startsWithFilter(commune, input))
+    this.state = {input: '', regions: [], departements: [], communes: []}
     }
 
     onSearch = async input => {
       this.setState({input})
-      this.setState({filteredCommunes: input.length > 0 ?
+    this.setState({regions: input.length > 0 ?
+      await getregions(input) :
+      []
+    })
+    this.setState({departements: input.length > 0 ?
+      await getDepartements(input) :
+      []
+    })
+    this.setState({communes: input.length > 0 ?
         await getCommunes(input) :
         []
       })
     }
 
     render() {
-      const {input, filteredCommunes} = this.state
+    const {input, regions, departements, communes} = this.state
       return (
         <div>
           <div className='hero__container'>
@@ -48,9 +52,9 @@ class Home extends React.Component {
             <div className='wrap'>
               <div className='wrapper'>
                 <Searchbar input={input} onChange={this.onSearch} />
-              <ResultsList list={filteredRegions} />
-              <ResultsList list={filteredDepartements} />
-              <ResultsList list={filteredCommunes} />
+              <ResultsList list={regions} />
+              <ResultsList list={departements} />
+              <ResultsList list={communes} />
               </div>
             </div>
           </div>
@@ -60,9 +64,11 @@ class Home extends React.Component {
                         align-items: center;
                         flex-direction: column;
                     }
+
                     .wrapper {
                         width: 80%;
                     }
+          
                     @media (max-width: 768px) {
                         .wrapper {
                             width: 100%;
