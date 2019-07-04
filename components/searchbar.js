@@ -1,6 +1,6 @@
 import React from 'react'
-import FaSearch from 'react-icons/lib/fa/search'
 import PropTypes from 'prop-types'
+import FaSearch from 'react-icons/lib/fa/search'
 
 class Searchbar extends React.Component {
   handleChange(event) {
