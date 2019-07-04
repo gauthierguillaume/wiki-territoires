@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Searchbar from '../components/searchbar'
-import CommunesList from '../components/communes-list'
+import ResultsList from '../components/results-list'
 
 const startsWithFilter = (a, b) => {
   return a.startsWith(b)
@@ -48,7 +48,9 @@ class Home extends React.Component {
             <div className='wrap'>
               <div className='wrapper'>
                 <Searchbar input={input} onChange={this.onSearch} />
-                {input.length > 0 && <CommunesList communes={filteredCommunes} />}
+              <ResultsList list={filteredRegions} />
+              <ResultsList list={filteredDepartements} />
+              <ResultsList list={filteredCommunes} />
               </div>
             </div>
           </div>
