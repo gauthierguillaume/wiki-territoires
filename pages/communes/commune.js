@@ -1,10 +1,10 @@
 import React from 'react'
-import _fetch from 'isomorphic-unfetch'
 import PropTypes from 'prop-types'
+import _fetch from 'isomorphic-unfetch'
 
 class Commune extends React.Component {
     static getInitialProps = async ({query}) => {
-      const res = await fetch(`https://geo.api.gouv.fr/communes/${query.codeCommune}`, {mode: 'cors'})
+      const res = await _fetch(`https://geo.api.gouv.fr/communes/${query.codeCommune}`, {mode: 'cors'})
       const commune = await res.json()
 
       return {
@@ -37,11 +37,11 @@ class Commune extends React.Component {
 
 Commune.propTypes = {
   commune: PropTypes.shape({
-  nom: PropTypes.string.isRequired,
-  code: PropTypes.string.isRequired,
-  codeRegion: PropTypes.string.isRequired,
+    nom: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired,
+    codeRegion: PropTypes.string.isRequired,
     codeDepartement: PropTypes.string.isRequired,
-  codesPostaux: PropTypes.array.isRequired,
+    codesPostaux: PropTypes.array.isRequired,
     population: PropTypes.number.isRequired
   }).isRequired
 }
