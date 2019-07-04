@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import FaSearch from 'react-icons/lib/fa/search'
 
 class Searchbar extends React.Component {
@@ -30,6 +31,11 @@ class Searchbar extends React.Component {
       </div>
     )
   }
+}
+
+Searchbar.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  input: PropTypes.func.isRequired
 }
 
 export default Searchbar

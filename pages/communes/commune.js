@@ -36,15 +36,14 @@ class Commune extends React.Component {
 }
 
 Commune.propTypes = {
+  commune: PropTypes.shape({
   nom: PropTypes.string.isRequired,
   code: PropTypes.string.isRequired,
   codeRegion: PropTypes.string.isRequired,
+    codeDepartement: PropTypes.string.isRequired,
   codesPostaux: PropTypes.array.isRequired,
-  population: PropTypes.number
-}
-
-Commune.defaultProps = {
-  population: null
+    population: PropTypes.number.isRequired
+  }).isRequired
 }
 
 export default Commune
