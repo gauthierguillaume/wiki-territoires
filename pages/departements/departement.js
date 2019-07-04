@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import _fetch from 'isomorphic-unfetch'
 
 class Departement extends React.Component {
@@ -20,6 +21,14 @@ class Departement extends React.Component {
         </div>
       )
     }
+}
+
+Departement.propTypes = {
+  departement: PropTypes.shape({
+    nom: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired,
+    codeRegion: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default Departement
