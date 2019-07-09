@@ -1,13 +1,13 @@
 import React from 'react'
 
 import Searchbar from '../components/searchbar'
-import ResultsList from '../components/results-list'
+import ResultsLists from '../components/results-lists'
 
 const getRegions = async input => {
   const options = {
     mode: 'cors'
   }
-  const res = await fetch(`https://geo.api.gouv.fr/regions?nom=${input}&limit=50`, options)
+  const res = await fetch(`https://geo.api.gouv.fr/regions?nom=${input}&limit=8`, options)
 
   return res.json()
 }
@@ -16,7 +16,7 @@ const getDepartements = async input => {
   const options = {
     mode: 'cors'
   }
-  const res = await fetch(`https://geo.api.gouv.fr/departements?nom=${input}&limit=50`, options)
+  const res = await fetch(`https://geo.api.gouv.fr/departements?nom=${input}&limit=8`, options)
 
   return res.json()
 }
@@ -25,7 +25,7 @@ const getCommunes = async input => {
   const options = {
     mode: 'cors'
   }
-  const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${input}&limit=50`, options)
+  const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${input}&limit=8`, options)
 
   return res.json()
 }
@@ -54,6 +54,8 @@ class Home extends React.Component {
 
   render() {
     const {input, regions, departements, communes} = this.state
+    const results = {regions, departements, communes}
+
     return (
       <div>
         <div className='hero__container'>
@@ -66,9 +68,7 @@ class Home extends React.Component {
           <div className='wrap'>
             <div className='wrapper'>
               <Searchbar input={input} onChange={this.onSearch} />
-              <ResultsList list={regions} />
-              <ResultsList list={departements} />
-              <ResultsList list={communes} />
+              <ResultsLists results={results} />
             </div>
           </div>
         </div>

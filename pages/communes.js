@@ -1,11 +1,7 @@
 import React from 'react'
 
 import Searchbar from '../components/searchbar'
-import ResultsList from '../components/results-list'
-
-const startsWithFilter = (a, b) => {
-  return a.startsWith(b)
-}
+import ResultsLists from '../components/results-lists'
 
 const getCommunes = async input => {
   const options = {
@@ -19,23 +15,20 @@ const getCommunes = async input => {
 class Communes extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {input: '', filteredCommunes: []}
+    this.state = {input: '', communes: []}
   }
-
-    communesFilter = input => {
-      return this.communes.filter(commune => startsWithFilter(commune, input))
-    }
 
     onSearch = async input => {
       this.setState({input})
-      this.setState({filteredCommunes: input.length > 0 ?
+      this.setState({communes: input.length > 0 ?
         await getCommunes(input) :
         []
       })
     }
 
     render() {
-      const {input, filteredCommunes} = this.state
+      const {input, communes} = this.state
+
       return (
         <div>
           <div className='section'>
@@ -47,7 +40,7 @@ class Communes extends React.Component {
             <div className='wrap'>
               <div className='wrapper'>
                 <Searchbar input={input} onChange={this.onSearch} />
-                {input.length > 0 && <ResultsList communes={filteredCommunes} />}
+                {input.length > 0 && <ResultsLists results={{communes}} />}
               </div>
             </div>
           </div>

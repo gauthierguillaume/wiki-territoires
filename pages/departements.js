@@ -1,11 +1,7 @@
 import React from 'react'
 
 import Searchbar from '../components/searchbar'
-import ResultsList from '../components/results-list'
-
-const startsWithFilter = (a, b) => {
-  return a.startsWith(b)
-}
+import ResultsLists from '../components/results-lists'
 
 const getDepartements = async input => {
   const options = {
@@ -19,23 +15,19 @@ const getDepartements = async input => {
 class Departements extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {input: '', filteredDepartements: []}
+    this.state = {input: '', departements: []}
   }
-
-    departementsFilter = input => {
-      return this.departements.filter(departement => startsWithFilter(departement, input))
-    }
 
     onSearch = async input => {
       this.setState({input})
-      this.setState({filteredDepartements: input.length > 0 ?
+      this.setState({departements: input.length > 0 ?
         await getDepartements(input) :
         []
       })
     }
 
     render() {
-      const {input, filteredDepartements} = this.state
+      const {input, departements} = this.state
       return (
         <div>
           <div className='section'>
@@ -47,25 +39,27 @@ class Departements extends React.Component {
             <div className='wrap'>
               <div className='wrapper'>
                 <Searchbar input={input} onChange={this.onSearch} />
-                {input.length > 0 && <ResultsList departements={filteredDepartements} />}
+                {input.length > 0 && <ResultsLists results={{departements}} />}
               </div>
             </div>
           </div>
           <style jsx>{`
-                    .wrap {
-                        display: flex;
-                        align-items: center;
-                        flex-direction: column;
-                    }
-                    .wrapper {
-                        width: 80%;
-                    }
-                    @media (max-width: 768px) {
-                        .wrapper {
-                            width: 100%;
-                        }    
-                    }
-                    `}</style>
+              .wrap {
+                  display: flex;
+                  align-items: center;
+                  flex-direction: column;
+              }
+              
+              .wrapper {
+                  width: 80%;
+              }
+              
+              @media (max-width: 768px) {
+                  .wrapper {
+                      width: 100%;
+                  }    
+              }
+            `}</style>
         </div>
       )
     }
