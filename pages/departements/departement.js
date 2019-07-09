@@ -4,7 +4,7 @@ import _fetch from 'isomorphic-unfetch'
 
 class Departement extends React.Component {
     static getInitialProps = async ({query}) => {
-      const res = await fetch(`https://geo.api.gouv.fr/departements/${query.codeDepartement}`, {mode: 'cors'})
+      const res = await _fetch(`https://geo.api.gouv.fr/departements/${query.codeDepartement}`, {mode: 'cors'})
       const departement = await res.json()
 
       return {
